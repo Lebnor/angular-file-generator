@@ -1,0 +1,35 @@
+.generator-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50vw;
+}
+
+.controls {
+    border: 1px solid black;
+    padding: 1em;
+}
+
+.controls__basic {
+    padding: 1em;
+    border-bottom: 1px ridge lightgray;
+}
+
+.controls__advanced {
+    padding: 1em;
+}
+
+.controls__item {
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+textarea {
+    line-height: 1.6;
+    padding: 1em;
+}
+
+.submit-button {
+    flex-basis: auto;
+}

@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --clr-primary: blue;
+    --clr-secondary: purple;
+    --clr-primary-alpha: rgba(var(--clr-primary), 0.66);
+    --clr-dark: #2d2d2d;
+    --clr-light: #f1f1f1;
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.5rem;
+    --fs-body: 1rem;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    font-size: var(--fs-body);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}

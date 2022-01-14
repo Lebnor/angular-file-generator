@@ -6,12 +6,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  textRows : number = 6;
   title : string = 'file generator';
   fileContent : string = '';
   fileExtension : string = 'txt';
   isAdvanced : boolean = false;
   fileName : string = "";
 
+  addRow() {
+    this.textRows = this.textRows + 1;
+    if (this.textRows > 16) {
+      this.textRows = 16;
+    }
+  }
+  removeRow() {
+    this.textRows = this.textRows - 1;
+    if (this.textRows < 4) {
+      this.textRows = 4;
+    }
+  }
+  loadRandomStory() {
+    fetch("https://shortstories-api.herokuapp.com/")
+    .then(response => response.json())
+    .then(data => {
+      this.fileContent = data.story
+    })
+  }
   generateFile() {
     // fileName must be set
     if (!this.fileName) {

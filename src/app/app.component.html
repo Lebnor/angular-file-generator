@@ -1,49 +1,70 @@
-
 <!-- file generator main component -->
 <div class="generator-container">
-
   <!-- control buttons -->
-  <div class="controls">
-
-    <div class="controls__basic">
+  <div class="options">
+    <div class="options__basic">
       <h3>Basic options</h3>
       <!-- choose the file name -->
-      <div class="controls__item">
+      <div class="options__item">
         <label>(*) file name: </label>
-        <input type="text" [(ngModel)]="fileName" />  
+        <input type="text" [(ngModel)]="fileName" />
+        <label *ngIf="!fileName.trim()" style="color: red">
+          File name must be specified
+        </label>
       </div>
     </div>
 
-    <div class="controls__advanced">
+    <div class="options__advanced">
       <!-- to switch to advanced mode -->
-      <input (click)="toggleAdvanced($event)" type="checkbox">
-      <label >Advanced</label>  
+      <input (click)="toggleAdvanced($event)" type="checkbox" />
+      <label>Advanced</label>
 
       <!-- to choose file type -->
       <div *ngIf="isAdvanced">
         <h3>Advanced options</h3>
 
-        <div class="controls__item">
+        <div class="options__item">
           <label>File extension </label>
           <select [(ngModel)]="fileExtension">
             <option value="txt">Text</option>
             <option value="py">Python</option>
             <option value="java">Java</option>
-          </select>  
+          </select>
         </div>
-
       </div>
     </div>
-
-    
-
   </div>
 
-  <!-- user's text goes here -->
-  <textarea [(ngModel)]="fileContent" rows="6" placeholder="Your content here...">
+  <div class="textarea-header">
+    <div>
+      <h3>{{ fileName }}.{{ fileExtension }}:</h3>
+    </div>
+    <div class="textarea-header__end">
+      <!-- to control textarea length -->
+      <div class="text-rows">
+        <button (click)="addRow()">+</button>
+        <button (click)="removeRow()">-</button>
+      </div>
 
+      <!-- to change text area's rows count-->
+      <div>
+        <button style="height: 100%;" (click)="loadRandomStory()" class="btn">Get random story</button>
+      </div>
+    </div>
+  </div>
+  <!-- user's text goes here -->
+  <textarea
+    [(ngModel)]="fileContent"
+    rows="{{ textRows }}"
+    placeholder="Your content here..."
+  >
   </textarea>
 
-  <!-- to submit -->
-  <button class="submit-button" (click)="generateFile()">Download File</button>
+  <!-- buttons to control textarea -->
+  <div class="controls">
+    <!-- to submit -->
+    <button class="btn submit-btn" (click)="generateFile()">
+      Download File
+    </button>
+  </div>
 </div>

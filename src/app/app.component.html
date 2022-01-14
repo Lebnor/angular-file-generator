@@ -8,6 +8,7 @@
       <div class="options__item">
         <label>(*) file name: </label>
         <input type="text" [(ngModel)]="fileName" />
+
         <label *ngIf="!fileName.trim()" style="color: red">
           File name must be specified
         </label>
@@ -36,14 +37,14 @@
   </div>
 
   <div class="textarea-header">
-    <div>
+    <div class="textarea-header__file-name">
       <h3>{{ fileName }}.{{ fileExtension }}:</h3>
     </div>
     <div class="textarea-header__end">
       <!-- to control textarea length -->
       <div class="text-rows">
-        <button (click)="addRow()">+</button>
-        <button (click)="removeRow()">-</button>
+        <button class="btn btn-small" (click)="addRow()">+</button>
+        <button class="btn btn-small" (click)="removeRow()">-</button>
       </div>
 
       <!-- to change text area's rows count-->

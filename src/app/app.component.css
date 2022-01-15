@@ -8,6 +8,10 @@
     max-width: 55vw;
 }
 
+main {
+    margin-bottom: 5em;
+}
+
 /* DESKTOP */
 @media screen and (max-width: 1500px) {
     .form-container {

@@ -1,0 +1,12 @@
+footer {
+    background-color: cornsilk;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 500px) {
+    footer {
+        align-items: center;
+        flex-direction: column;
+    }
+}

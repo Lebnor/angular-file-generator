@@ -7,8 +7,11 @@
       <!-- choose the file name -->
       <div class="options__item">
         <label>(*) file name: </label>
-        <input type="text" [(ngModel)]="fileName" />
-
+        <input list="names" type="text" [(ngModel)]="fileName" />
+        <datalist id="names">
+          <option>hello-world</option>
+          <option>my-name</option>
+        </datalist>
         <label *ngIf="!fileName.trim()" style="color: red">
           File name must be specified
         </label>

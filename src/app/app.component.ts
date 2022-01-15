@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  textRows : number = 6;
+  textRows : number = 7;
   title : string = 'file generator';
   fileContent : string = '';
   fileExtension : string = 'txt';

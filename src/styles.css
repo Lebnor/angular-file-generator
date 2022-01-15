@@ -19,7 +19,9 @@
         --fs-h1: 3rem;
         --fs-h2: 1.5rem;
         --fs-h3: 1rem;
+        --fs-body: 1.25em;
     }
+    
 }
 
 @media screen and (max-width: 320px) {
@@ -27,6 +29,7 @@
         --fs-h1: 2rem;
         --fs-h2: 1.5rem;
         --fs-h3: .75rem;
+        --fs-body: 1.5em;
     }
 }
 

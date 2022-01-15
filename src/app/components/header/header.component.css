@@ -1,0 +1,27 @@
+header {
+    background: linear-gradient(-135deg, indigo, blue, indigo);
+    padding: 4em 2em;
+}
+
+.title {
+    text-align: center;
+    line-height: 0.5;
+}
+
+h1 {
+    font-size: var(--fs-h1);
+    font-weight: var(--fw-regular);
+    color: var(--clr-light);
+}
+
+h3 {
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-light);
+    color: var(--clr-light);
+}
+
+@media screen and (max-width: 900px) {
+    .title {
+        line-height: 1;
+    }
+}

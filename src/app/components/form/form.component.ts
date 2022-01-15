@@ -37,26 +37,20 @@ export class FormComponent implements OnInit {
   }
 
   // downloads the file to the user's storage
-  generateFile() {
+  downloadFile() {
     // fileName must be set
     if (!this.fileName) {
       alert('Please enter file name');
       return;
     }
 
-    // get data about the file
-    const [fileName, fileContent, fileExtension] = [
-      this.fileName,
-      this.fileContent,
-      this.fileExtension,
-    ];
-    const fullFileName: string = `${fileName}.${fileExtension}`;
+    const fullFileName: string = `${this.fileName}.${this.fileExtension}`;
 
     // create download element and download the file
     const link = document.createElement('a');
     link.setAttribute(
       'href',
-      'data:text/plain;charset=utf-8,' + encodeURIComponent(fileContent)
+      'data:text/plain;charset=utf-8,' + encodeURIComponent(this.fileContent)
     );
     link.setAttribute('download', fullFileName);
     link.style.display = 'none';
@@ -64,6 +58,7 @@ export class FormComponent implements OnInit {
     link.click();
     document.body.removeChild(link);
   }
+
 
   // toggles wether the options are in advanced mode or not.
   // toggling ON requires confirmation

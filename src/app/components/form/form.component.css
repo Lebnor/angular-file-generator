@@ -147,8 +147,8 @@
       padding-right: 0;
     }
   
-    input {
-        display: block;
+    input[type=text] {
+      display: block;
       margin-left: -2em;
       text-align: center;
     }

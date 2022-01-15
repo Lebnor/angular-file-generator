@@ -20,8 +20,8 @@
 
     <div class="options__advanced">
       <!-- to switch to advanced mode -->
-      <input (click)="toggleAdvanced($event)" type="checkbox">
-      <label>Advanced</label>
+      <input (click)="toggleAdvanced($event)" type="checkbox" />
+      <label> Advanced </label>
 
       <!-- to choose file type -->
       <div *ngIf="isAdvanced">
@@ -52,7 +52,9 @@
 
       <!-- to change text area's rows count-->
       <div>
-        <button style="height: 100%;" (click)="loadRandomStory()" class="btn">Get random story</button>
+        <button style="height: 100%" (click)="loadRandomStory()" class="btn">
+          Get random story
+        </button>
       </div>
     </div>
   </div>

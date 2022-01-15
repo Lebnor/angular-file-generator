@@ -50,5 +50,8 @@ body {
     background-color: var(--clr-light);
     color: var(--clr-dark);
 }
+button {
+    font-size: var(--fs-body);
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

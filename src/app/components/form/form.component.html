@@ -41,7 +41,7 @@
 
   <div class="textarea-header">
     <div class="textarea-header__file-name">
-      <h3>{{ fullFileName() }}</h3>
+      <h3>{{ getFullFileName() }}</h3>
     </div>
     <div class="textarea-header__end">
       <!-- to control textarea length -->
@@ -78,10 +78,10 @@
       type="submit"
       [ngClass]="{ disabled: !fileName }"
       class="btn submit-btn"
-      [href]="sanitizedLink()"
-      [download]="fullFileName()"
+      [href]="getSanitizedLink()"
+      [download]="getFullFileName()"
     >
-      Download {{ fullFileName() }}
+      Download {{ getFullFileName() }}
     </a>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 
@@ -12,7 +12,6 @@ export class FormComponent {
   constructor(private sanitizer: DomSanitizer) {}
 
   textRows: number = 7;
-  title: string = 'file generator';
   fileContent: string = '';
   fileExtension: string = 'txt';
   fileName: string = '';
@@ -38,7 +37,7 @@ export class FormComponent {
   }
 
   // returns sanitized download link for the file being created
-  sanitizedLink() : SafeHtml {
+  getSanitizedLink() : SafeHtml {
     return this.sanitizer.bypassSecurityTrustUrl(
       'data:text/plain;charset=utf-8,' + encodeURIComponent(this.fileContent)
     );
@@ -46,7 +45,7 @@ export class FormComponent {
 
   // returns the full file name of the file being created.
   // elipses the name if it's too long
-  fullFileName(): string {
+  getFullFileName(): string {
     return this.elipsed(this.fileName) + "." + this.fileExtension;
   }
 

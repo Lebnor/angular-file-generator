@@ -1,176 +1,206 @@
+* {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
 .generator-container {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
+}
+
+.options {
+  border: 1px solid black;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.options__basic {
+  padding: 1em;
+  border-bottom: 1px ridge lightgray;
+}
+
+.options__advanced {
+  padding: 1em;
+}
+
+.options__item {
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+input {
+  border-radius: 5px;
+}
+
+.options input {
+  padding: 0.25em 1em;
+  border: 1px solid lightgray;
+}
+
+.options input:focus {
+  outline: none;
+  border: 1px solid var(--clr-primary);
+}
+
+select {
+  padding: 0.5em 1.5em;
+  border-radius: 5px;
+}
+
+select:focus {
+  outline: none;
+  border: 1px solid var(--clr-primary);
+}
+
+.textarea-header {
+  border: 1px solid gray;
+  border-bottom: 1px ridge lightgray;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 0px 2px gray;
+}
+
+.textarea-header__file-name {
+  flex: 1 1 70%;
+}
+
+.textarea-header__end {
+  display: flex;
+}
+
+.textarea-header__end > * {
+  margin: 0 0.5em;
+}
+
+textarea {
+  line-height: 1.6;
+  padding: 1em;
+  border-top: none;
+  margin-bottom: 0.25em;
+  box-shadow: 0px 0px 5px gray;
+  width: 100%;
+}
+
+textarea:focus {
+  outline: none;
+  border: 1px solid gray;
+}
+
+.btn {
+  width: fit-content;
+  height: fit-content;
+  min-width: 45px;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  color: var(--clr-dark);
+  background: var(--clr-light);
+  border: none;
+  outline: none;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-small {
+  width: calc(100% + 0.5em);
+}
+
+.btn-medium {
+  min-width: 45px;
+}
+
+.submit-btn {
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 0px 2px gray;
+  text-decoration: none;
+}
+
+.submit-btn:hover {
+  background-color: indigo;
+}
+
+.disabled {
+  cursor: crosshair;
+  pointer-events: none;
+  cursor: not-allowed;
   
-  .options {
-    border: 1px solid black;
-    padding: 1em;
-    margin-bottom: 1em;
-  }
-  
-  .options__basic {
-    padding: 1em;
-    border-bottom: 1px ridge lightgray;
-  }
-  
-  .options__advanced {
-    padding: 1em;
-  }
-  
-  .options__item {
-    margin-right: 1em;
-    margin-left: 1em;
-  }
-  
-  input {
-      border-radius: 5px;
-  }
-  
-  .options input {
-      padding: .25em 1em;
-      border: 1px solid lightgray;
-  
-  }
-  
-  .options input:focus {
-      outline: none;
-      border: 1px solid var(--clr-primary);
-  }
-  
-  select {
-      padding: .5em 1.5em;
-      border-radius: 5px;
-  }
-  
-  select:focus {
-      outline: none;
-      border: 1px solid var(--clr-primary);
-  }
-  
-  .textarea-header {
-    border: 1px solid gray;
-    border-bottom: 1px ridge lightgray;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0px 0px 2px gray;
-  }
-  
-  .textarea-header__end {
-    display: flex;
-  }
-  
-  .textarea-header__end > * {
-    margin: 0 0.5em;
-  }
-  
-  textarea {
-    line-height: 1.6;
-    padding: 1em;
-    border-top: none;
-    margin-bottom: 0.25em;
-    box-shadow: 0px 0px 5px gray;
-  }
-  
-  textarea:focus {
-    outline: none;
-    border: 1px solid gray;
-  }
-  
-  .btn {
-    width: fit-content;
-    height: fit-content;
-    padding: 0.5em 1em;
-    border-radius: 5px;
-    color: var(--clr-dark);
-    background: var(--clr-light);
-    border: none;
-    outline: none;
-    transition: all 0.1s ease-in-out;
-    cursor: pointer;
-  }
-  
-  .btn-small {
-    width: calc(100% + 0.5em);
-  }
-  .submit-btn {
-    background-color: var(--clr-primary);
-    color: var(--clr-light);
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0px 0px 2px gray;
-  }
-  
-  .submit-btn:hover {
-    background-color: indigo;
-  }
-  
-  .btn:active {
-    transform: scale(0.9);
-  }
-  
-  .controls {
-    display: flex;
-  }
-  
-  .text-rows {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  opacity: 0.5;
+}
+
+.disabled:hover {
+  cursor: not-allowed;
+}
+
+.btn:active {
+  transform: scale(0.9);
+}
+
+.controls {
+  display: flex;
+}
+
+.text-rows {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* MOBILE */
+
+/* for especially small screens */
+@media screen and (max-width: 500px) {
+  *,
+  *::before,
+  *::after {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  
-  /* MOBILE */
-  
-  /* for especially small screens */
-  @media screen and (max-width: 500px) {
-    .textarea-header {
-      flex-direction: column;
-      text-overflow: ellipsis;
-    }
-  
-    *,
-    *::before,
-    *::after {
-      margin-left: 0;
-      margin-right: 0;
-      padding-left: 0;
-      padding-right: 0;
-    }
-  
-    .textarea-header {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  
-    input[type=text] {
-      display: block;
-      margin-left: -2em;
-      text-align: center;
-    }
-  
-    .btn {
-      padding: 0.5em 1.5em;
-    }
+  .textarea-header {
+    padding-left: 0;
+    padding-right: 0;
   }
-  
-  @media screen and (max-width: 900px) {
-  
-    *,
-    *::before,
-    *::after {
-      margin-left: 0;
-      margin-right: 0;
-      padding-left: 0;
-      padding-right: 0;
-    }
-  
-    .btn {
-      padding: 0.5em 1.5em;
-    }
+
+  input[type="text"] {
+    display: block;
+    margin-left: -2em;
+    text-align: center;
   }
-  
+
+  .btn {
+    padding: 0.5em 1.5em;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  *,
+  *::before,
+  *::after {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .textarea-header {
+    flex-direction: column;
+    text-overflow: ellipsis;
+  }
+
+  .btn {
+    padding: 0.5em 1.5em;
+  }
+}

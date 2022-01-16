@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
+
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css'],
 })
-export class FormComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class FormComponent {
+  constructor(private sanitizer: DomSanitizer) {}
 
   textRows: number = 7;
   title: string = 'file generator';
   fileContent: string = '';
   fileExtension: string = 'txt';
-  isAdvanced: boolean = false;
   fileName: string = '';
+  isAdvanced: boolean = false;
 
   // adds a row to the textarea, max is 17
   addRow() {
@@ -36,29 +37,24 @@ export class FormComponent implements OnInit {
       });
   }
 
-  // downloads the file to the user's storage
-  downloadFile() {
-    // fileName must be set
-    if (!this.fileName) {
-      alert('Please enter file name');
-      return;
-    }
-
-    const fullFileName: string = `${this.fileName}.${this.fileExtension}`;
-
-    // create download element and download the file
-    const link = document.createElement('a');
-    link.setAttribute(
-      'href',
+  // returns sanitized download link for the file being created
+  sanitizedLink() : SafeHtml {
+    return this.sanitizer.bypassSecurityTrustUrl(
       'data:text/plain;charset=utf-8,' + encodeURIComponent(this.fileContent)
     );
-    link.setAttribute('download', fullFileName);
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   }
 
+  // returns the full file name of the file being created.
+  // elipses the name if it's too long
+  fullFileName(): string {
+    return this.elipsed(this.fileName) + "." + this.fileExtension;
+  }
+
+  // truncates strings that are longer than 100 characters
+  elipsed(name : string) : string {
+    const maxLength = 100;
+    return name.length > maxLength ? name.substring(0, maxLength - 3) + "..." : name;
+  }
 
   // toggles wether the options are in advanced mode or not.
   // toggling ON requires confirmation
@@ -76,5 +72,8 @@ export class FormComponent implements OnInit {
         event.preventDefault();
       }
     }
+  
   }
+
+  
 }

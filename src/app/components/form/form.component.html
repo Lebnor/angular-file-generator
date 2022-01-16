@@ -7,7 +7,7 @@
       <!-- choose the file name -->
       <div class="options__item">
         <label>(*) file name: </label>
-        <input list="names" type="text" [(ngModel)]="fileName" />
+        <input required list="names" type="text" [(ngModel)]="fileName" />
         <datalist id="names">
           <option>hello-world</option>
           <option>my-name</option>
@@ -41,7 +41,7 @@
 
   <div class="textarea-header">
     <div class="textarea-header__file-name">
-      <h3>{{ fileName }}.{{ fileExtension }}:</h3>
+      <h3>{{ fullFileName() }}</h3>
     </div>
     <div class="textarea-header__end">
       <!-- to control textarea length -->
@@ -52,7 +52,11 @@
 
       <!-- to change text area's rows count-->
       <div>
-        <button style="height: 100%" (click)="loadRandomStory()" class="btn">
+        <button
+          style="height: 100%"
+          (click)="loadRandomStory()"
+          class="btn btn-medium"
+        >
           Get random story
         </button>
       </div>
@@ -69,8 +73,15 @@
   <!-- buttons to control textarea -->
   <div class="controls">
     <!-- to submit -->
-    <button class="btn submit-btn" (click)="downloadFile()">
-      Download File
-    </button>
+
+    <a
+      type="submit"
+      [ngClass]="{ disabled: !fileName }"
+      class="btn submit-btn"
+      [href]="sanitizedLink()"
+      [download]="fullFileName()"
+    >
+      Download {{ fullFileName() }}
+    </a>
   </div>
 </div>

@@ -1,9 +1,12 @@
 <header>
-
-    <div class="title">
-        <h1>File Generator</h1>
-        <h3>Create your files the cool way</h3>
-    
+  <div class="title">
+    <h1 >{{ lang["header-title"] }}</h1>
+    <div class="subtitle">
+        <h3 >{{ lang["header-subtitle"] }}</h3>
+        <select (change)="setLang($event)">
+            <option [attr.selected]="isCurrentLang('english')" value="en">English</option>
+            <option [attr.selected]="isCurrentLang('hebrew')" value="he">עברית</option>
+        </select>
     </div>
-
+  </div>
 </header>

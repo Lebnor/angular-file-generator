@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-
-
+import { Translation } from 'src/app/interfaces/translation';
+import { TranslationsService } from 'src/app/services/translations.service';
 
 @Component({
   selector: 'app-form',
@@ -9,13 +9,18 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent {
-  constructor(private sanitizer: DomSanitizer) {}
 
-  textRows: number = 7;
-  fileContent: string = '';
-  fileExtension: string = 'txt';
-  fileName: string = '';
-  isAdvanced: boolean = false;
+  constructor(private sanitizer: DomSanitizer, private _translationService : TranslationsService) {
+    this.lang = this._translationService.allLanguages['en'];
+  }
+
+  textRows: number = 7;                   // number of rows in the textarea
+  fileContent: string = '';               // text inside the file
+  fileExtension: string = 'txt';          // extension of file
+  fileName: string = '';                  // name of file
+  isAdvanced: boolean = false;            // mode of options
+
+  @Input() lang : Translation;
 
   // adds a row to the textarea, max is 17
   addRow() {
@@ -37,7 +42,7 @@ export class FormComponent {
   }
 
   // returns sanitized download link for the file being created
-  getSanitizedLink() : SafeHtml {
+  getSanitizedLink(): SafeHtml {
     return this.sanitizer.bypassSecurityTrustUrl(
       'data:text/plain;charset=utf-8,' + encodeURIComponent(this.fileContent)
     );
@@ -46,13 +51,15 @@ export class FormComponent {
   // returns the full file name of the file being created.
   // elipses the name if it's too long
   getFullFileName(): string {
-    return this.elipsed(this.fileName) + "." + this.fileExtension;
+    return this.elipsed(this.fileName) + '.' + this.fileExtension;
   }
 
   // truncates strings that are longer than 100 characters
-  elipsed(name : string) : string {
+  elipsed(name: string): string {
     const maxLength = 100;
-    return name.length > maxLength ? name.substring(0, maxLength - 3) + "..." : name;
+    return name.length > maxLength
+      ? name.substring(0, maxLength - 3) + '...'
+      : name;
   }
 
   // toggles wether the options are in advanced mode or not.
@@ -71,8 +78,5 @@ export class FormComponent {
         event.preventDefault();
       }
     }
-  
   }
-
-  
 }

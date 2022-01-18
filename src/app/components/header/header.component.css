@@ -1,27 +1,44 @@
 header {
-    background: linear-gradient(-135deg, indigo, blue, indigo);
-    padding: 4em 2em;
+  background: linear-gradient(-135deg, indigo, blue, indigo);
+  padding: 4em 2em;
 }
 
 .title {
-    text-align: center;
-    line-height: 0.5;
+  text-align: center;
+  line-height: 0.5;
 }
 
 h1 {
-    font-size: var(--fs-h1);
-    font-weight: var(--fw-regular);
-    color: var(--clr-light);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-regular);
+  color: var(--clr-light);
 }
 
 h3 {
-    font-size: var(--fs-h3);
-    font-weight: var(--fw-light);
-    color: var(--clr-light);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-light);
+  color: var(--clr-light);
+}
+
+select,
+option {
+  padding: 0.5em 1.5em;
+  border-radius: 5px;
+  outline: var(--clr-primary);
+  cursor: pointer;
+}
+
+select:focus {
+  border: 1px solid var(--clr-primary);
+}
+
+select:hover {
+    border: 1px solid var(--clr-primary);
+    background-color: lightgray;
 }
 
 @media screen and (max-width: 900px) {
-    .title {
-        line-height: 1;
-    }
+  .title {
+    line-height: 1;
+  }
 }

@@ -47,7 +47,7 @@ input {
   border: 1px solid var(--clr-primary);
 }
 
-select {
+select, option {
   padding: 0.5em 1.5em;
   border-radius: 5px;
 }

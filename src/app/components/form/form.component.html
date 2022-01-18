@@ -3,17 +3,18 @@
   <!-- control buttons -->
   <div class="options">
     <div class="options__basic">
-      <h3>Basic options</h3>
+      <h3>{{ lang["basic-options"] }}</h3>
       <!-- choose the file name -->
       <div class="options__item">
-        <label>(*) file name: </label>
+        <label>(*) {{ lang["file-name"] }} </label>
         <input required list="names" type="text" [(ngModel)]="fileName" />
         <datalist id="names">
           <option>hello-world</option>
           <option>my-name</option>
+          <option>my-cool-file</option>
         </datalist>
         <label *ngIf="!fileName.trim()" style="color: red">
-          File name must be specified
+          {{ lang["file-name-error"] }}
         </label>
       </div>
     </div>
@@ -21,14 +22,14 @@
     <div class="options__advanced">
       <!-- to switch to advanced mode -->
       <input (click)="toggleAdvanced($event)" type="checkbox" />
-      <label> Advanced </label>
+      <label> {{ lang["advanced"] }} </label>
 
       <!-- to choose file type -->
       <div *ngIf="isAdvanced">
-        <h3>Advanced options</h3>
+        <h3>{{ lang["advanced-options"] }}</h3>
 
         <div class="options__item">
-          <label>File extension </label>
+          <label>{{ lang["file-extension"] }} </label>
           <select [(ngModel)]="fileExtension">
             <option value="txt">Text</option>
             <option value="py">Python</option>
@@ -57,7 +58,7 @@
           (click)="loadRandomStory()"
           class="btn btn-medium"
         >
-          Get random story
+          {{ lang["load-random-story"] }}
         </button>
       </div>
     </div>
@@ -66,7 +67,7 @@
   <textarea
     [(ngModel)]="fileContent"
     rows="{{ textRows }}"
-    placeholder="Your content here..."
+    placeholder="{{ lang['your-content-here'] }}"
   >
   </textarea>
 
@@ -81,7 +82,7 @@
       [href]="getSanitizedLink()"
       [download]="getFullFileName()"
     >
-      Download {{ getFullFileName() }}
+      {{ lang["download"] }} {{ getFullFileName() }}
     </a>
   </div>
 </div>

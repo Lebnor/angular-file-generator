@@ -8,6 +8,8 @@ import {MatInputModule} from '@angular/material/input';
 import { HeaderComponent } from './components/header/header.component';
 import { FormComponent } from './components/form/form.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TranslationsService } from './services/translations.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,8 +24,9 @@ import { FooterComponent } from './components/footer/footer.component';
     FormsModule,
     BrowserAnimationsModule,
     MatInputModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [TranslationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,7 +10,6 @@ import { Subject } from 'rxjs';
 export class TranslationsService {
   /**
    * all languages supported
-   * TODO: serve this data from a web server
    */
   allLanguages: any = {};
 
@@ -19,6 +18,7 @@ export class TranslationsService {
    */
   currentLang: Subject<Translation> = new Subject<Translation>();
 
+  // sets the language that the page will render in
   setLanguage(languageName: string) {
     const newCurrentLang: Translation = this.allLanguages[languageName];
     this.currentLang.next(newCurrentLang);

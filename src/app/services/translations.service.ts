@@ -12,53 +12,12 @@ export class TranslationsService {
    * all languages supported
    * TODO: serve this data from a web server
    */
-  allLanguages: Translations = {
-    en: {
-      name: 'English',
-      dir: 'ltr',
-      'header-title': 'File Generator',
-      'header-subtitle': 'Create files the cool way!',
-      'basic-options': 'Basic Options',
-      'file-name': 'File Name:',
-      'file-name-error': 'file name must be specified',
-      advanced: 'advanced',
-      'advanced-options': 'Advanced Options',
-      'file-extension': 'File Extension',
-      'load-random-story': 'Load Random Story',
-      'your-content-here': 'Your content here...',
-      'made-by': 'Made By Liel Ben-Or',
-      download: 'download',
-      "code-on" : "Code on",
-      "github": "github"
-
-    },
-    he: {
-      name: 'Hebrew',
-      dir: 'rtl',
-      'header-title': 'יוצר הקבצים',
-      'header-subtitle': 'צור את הקבצים שלך בצורה מגניבה',
-      'basic-options': 'אפשרויות רגילות',
-      'file-name': 'שם קובץ:',
-      'file-name-error': 'חסר שם קובץ',
-      advanced: 'מתקדם',
-      'advanced-options': 'אפשרויות מתקדמות',
-      'file-extension': 'סיומת הקובץ',
-      'load-random-story': 'טען סיפור קצר',
-      'your-content-here': 'כתוב כאן...',
-      'made-by': 'הוכן ע\" ליאל בן-אור',
-      download: 'הורד את',
-      "code-on" : "הקוד זמין ב",
-      "github": "גיטהאב"
-    },
-  };
+  allLanguages: any = {};
 
   /**
    * the current language the page is rendered in
    */
   currentLang: Subject<Translation> = new Subject<Translation>();
-
-  // url to file containing all supported languages
-  private url: string = '/assets/translations.json';
 
   setLanguage(languageName: string) {
     const newCurrentLang: Translation = this.allLanguages[languageName];
@@ -66,5 +25,16 @@ export class TranslationsService {
     localStorage.setItem('language', languageName);
   }
 
-  constructor(private http: HttpClient) {}
+  // fetching all supported languages from aws
+  constructor(private http: HttpClient) {
+    fetch(
+      'https://e5lvsfi4il.execute-api.eu-west-1.amazonaws.com/default/myTranslations'
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        this.allLanguages = data;
+        const savedLang = localStorage.getItem('language') || 'en';
+        this.currentLang.next(this.allLanguages[savedLang]);
+      });
+  }
 }

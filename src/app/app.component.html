@@ -1,11 +1,12 @@
 <!-- header -->
-<div [attr.dir]="lang.dir" class="header-container">
-  
-  <app-header [lang]="lang"></app-header>
-</div>
-<!-- file generator form  main component-->
-<main [attr.dir]="lang.dir" class="form-container">
-  <app-form [lang]="lang"></app-form>
-</main>
+<div *ngIf="lang">
+  <div [attr.dir]="lang.dir" class="header-container">
+    <app-header [lang]="lang"></app-header>
+  </div>
+  <!-- file generator form  main component-->
+  <main [attr.dir]="lang.dir" class="form-container">
+    <app-form [lang]="lang"></app-form>
+  </main>
 
-<app-footer [attr.dir]="lang.dir" [lang]="lang"></app-footer>
+  <app-footer [attr.dir]="lang.dir" [lang]="lang"></app-footer>
+</div>

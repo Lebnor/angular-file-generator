@@ -3,10 +3,10 @@
   <!-- control buttons -->
   <div class="options">
     <div class="options__basic">
-      <h3>{{ lang["basic-options"] }}</h3>
+      <h3>{{ "basic-options" | translations }}</h3>
       <!-- choose the file name -->
       <div class="options__item">
-        <label>(*) {{ lang["file-name"] }} </label>
+        <label>(*) {{ "file-name" | translations }} </label>
         <input required list="names" type="text" [(ngModel)]="fileName" />
         <datalist id="names">
           <option>hello-world</option>
@@ -14,7 +14,7 @@
           <option>my-cool-file</option>
         </datalist>
         <label *ngIf="!fileName.trim()" style="color: red">
-          {{ lang["file-name-error"] }}
+          {{ "file-name-error" | translations }}
         </label>
       </div>
     </div>
@@ -22,14 +22,14 @@
     <div class="options__advanced">
       <!-- to switch to advanced mode -->
       <input (click)="toggleAdvanced($event)" type="checkbox" />
-      <label> {{ lang["advanced"] }} </label>
+      <label> {{ "advanced" | translations }} </label>
 
       <!-- to choose file type -->
       <div *ngIf="isAdvanced">
-        <h3>{{ lang["advanced-options"] }}</h3>
+        <h3>{{ "advanced-options" | translations }}</h3>
 
         <div class="options__item">
-          <label>{{ lang["file-extension"] }} </label>
+          <label>{{ "file-extension" | translations }} </label>
           <select [(ngModel)]="fileExtension">
             <option value="txt">Text</option>
             <option value="py">Python</option>
@@ -58,7 +58,7 @@
           (click)="loadRandomStory()"
           class="btn btn-medium"
         >
-          {{ lang["load-random-story"] }}
+          {{ "load-random-story" | translations }}
         </button>
       </div>
     </div>
@@ -67,7 +67,7 @@
   <textarea
     [(ngModel)]="fileContent"
     rows="{{ textRows }}"
-    placeholder="{{ lang['your-content-here'] }}"
+    placeholder="{{ 'your-content-here' | translations }}"
   >
   </textarea>
 
@@ -82,7 +82,7 @@
       [href]="getSanitizedLink()"
       [download]="getFullFileName()"
     >
-      {{ lang["download"] }} {{ getFullFileName() }}
+      {{ "download" | translations }} {{ getFullFileName() }}
     </a>
   </div>
 </div>

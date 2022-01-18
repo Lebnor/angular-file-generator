@@ -10,6 +10,7 @@ import { FormComponent } from './components/form/form.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TranslationsService } from './services/translations.service';
 import { HttpClientModule } from '@angular/common/http';
+import { TranslationsPipe } from './pipes/translations.pipe';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FormComponent,
     FooterComponent,
+    TranslationsPipe,
   ],
   imports: [
     BrowserModule,

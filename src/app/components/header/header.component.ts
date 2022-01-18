@@ -10,8 +10,17 @@ import { TranslationsService } from 'src/app/services/translations.service';
 export class HeaderComponent {
   @Input() lang: Translation;
 
+  // lang: Translation;
+
   constructor(private _translationsService: TranslationsService) {
     this.lang = _translationsService.allLanguages['en'];
+  }
+
+  // initializations for the app
+  ngOnInit() {
+    this._translationsService.currentLang.subscribe(
+      (value: Translation) => (this.lang = value)
+    )
   }
 
   // update the language of the page
@@ -22,6 +31,6 @@ export class HeaderComponent {
   // returns true if the language given is equal to the language the page is rendered in,
   // and null otherwise
   isCurrentLang(languageCode : string) {
-    return languageCode === this.lang.name.toLowerCase() ? true : null;
+    return languageCode === this.lang?.name?.toLowerCase() ? true : null;
   }
 }

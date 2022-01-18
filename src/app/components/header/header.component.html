@@ -1,12 +1,16 @@
 <header>
   <div class="title">
-    <h1 >{{ lang["header-title"] }}</h1>
+    <h1>{{ "header-title" | translations }}</h1>
     <div class="subtitle">
-        <h3 >{{ lang["header-subtitle"] }}</h3>
-        <select (change)="setLang($event)">
-            <option [attr.selected]="isCurrentLang('english')" value="en">English</option>
-            <option [attr.selected]="isCurrentLang('hebrew')" value="he">עברית</option>
-        </select>
+      <h3>{{ "header-subtitle" | translations }}</h3>
+      <select (change)="setLang($event)">
+        <option [attr.selected]="isCurrentLang('english')" value="en">
+          English
+        </option>
+        <option [attr.selected]="isCurrentLang('hebrew')" value="he">
+          עברית
+        </option>
+      </select>
     </div>
   </div>
 </header>

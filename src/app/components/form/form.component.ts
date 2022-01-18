@@ -9,18 +9,13 @@ import { TranslationsService } from 'src/app/services/translations.service';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent {
+  constructor(private sanitizer: DomSanitizer) {}
 
-  constructor(private sanitizer: DomSanitizer, private _translationService : TranslationsService) {
-    this.lang = this._translationService.allLanguages['en'];
-  }
-
-  textRows: number = 7;                   // number of rows in the textarea
-  fileContent: string = '';               // text inside the file
-  fileExtension: string = 'txt';          // extension of file
-  fileName: string = '';                  // name of file
-  isAdvanced: boolean = false;            // mode of options
-
-  @Input() lang : Translation;
+  textRows: number = 7; // number of rows in the textarea
+  fileContent: string = ''; // text inside the file
+  fileExtension: string = 'txt'; // extension of file
+  fileName: string = ''; // name of file
+  isAdvanced: boolean = false; // mode of options
 
   // adds a row to the textarea, max is 17
   addRow() {

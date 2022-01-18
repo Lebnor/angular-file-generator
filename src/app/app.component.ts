@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Translation } from './interfaces/translation';
 import { TranslationsService } from './services/translations.service';
 
@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
     this.lang = _currLangService.allLanguages['en'];
   }
 
+  // initializations for the app
   ngOnInit() {
     this._currLangService.currentLang.subscribe(
       (value: Translation) => (this.lang = value)

@@ -25,8 +25,7 @@ export class TranslationsService {
     localStorage.setItem('language', languageName);
   }
 
-  // fetching all supported languages from aws
-  constructor(private http: HttpClient) {
+  initialize() {
     fetch(
       'https://e5lvsfi4il.execute-api.eu-west-1.amazonaws.com/default/myTranslations'
     )
@@ -37,4 +36,6 @@ export class TranslationsService {
         this.currentLang.next(this.allLanguages[savedLang]);
       });
   }
+  // fetching all supported languages from aws
+  constructor(private http: HttpClient) {}
 }

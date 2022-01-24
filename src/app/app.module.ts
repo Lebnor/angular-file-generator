@@ -29,13 +29,13 @@ import { APP_INITIALIZER } from '@angular/core';
     HttpClientModule,
   ],
   providers: [
-    TranslationsService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initialize,
-      deps: [TranslationsService],
-      multi: true,
-    },
+    // TranslationsService,
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: initialize,
+    //   deps: [TranslationsService],
+    //   multi: true,
+    // },
   ],
   bootstrap: [AppComponent],
 })

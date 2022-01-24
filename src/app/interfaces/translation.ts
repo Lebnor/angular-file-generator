@@ -15,4 +15,5 @@ export interface Translation {
   download: string;
   'code-on': string;
   github: string;
+  [key : string] : string;
 }

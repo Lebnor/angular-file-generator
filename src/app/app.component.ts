@@ -10,7 +10,8 @@ import { TranslationsService } from './services/translations.service';
 export class AppComponent implements OnInit {
   // title of the page
   title = 'file generator';
-  // language of the page, will be passed to children
+  
+  // language of the page
   lang: Translation;
 
   constructor(private _currLangService: TranslationsService) {
